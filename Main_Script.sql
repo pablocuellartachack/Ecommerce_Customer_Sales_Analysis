@@ -39,13 +39,13 @@ CASE
 	WHEN (R>=2 AND R<=5) AND (((F+M)/2)>=3 AND ((F+M)/2)<=5) THEN 'Loyal Customers'
 	WHEN (R>=3 AND R<=5) AND (((F+M)/2)>=1 AND ((F+M)/2)<=3) THEN 'Potential Loyalist'
 	WHEN (R>=4 AND R<=5) AND (((F+M)/2)>=0 AND ((F+M)/2)<=1) THEN 'New Customers'
-    WHEN (R>=3 AND R<=4) AND (((F+M)/2)>=0 AND ((F+M)/2)<=1) THEN 'Promising'
-    WHEN (R>=2 AND R<=3) AND (((F+M)/2)>=2 AND ((F+M)/2)<=3) THEN 'Customers Needing Attention'
-    WHEN (R>=2 AND R<=3) AND (((F+M)/2)>=0 AND ((F+M)/2)<=2) THEN 'About To Sleep'
+    	WHEN (R>=3 AND R<=4) AND (((F+M)/2)>=0 AND ((F+M)/2)<=1) THEN 'Promising'
+    	WHEN (R>=2 AND R<=3) AND (((F+M)/2)>=2 AND ((F+M)/2)<=3) THEN 'Customers Needing Attention'
+    	WHEN (R>=2 AND R<=3) AND (((F+M)/2)>=0 AND ((F+M)/2)<=2) THEN 'About To Sleep'
 	WHEN (R>=0 AND R<=2) AND (((F+M)/2)>=2 AND ((F+M)/2)<=5) THEN 'At Risk'
-    WHEN (R>=0 AND R<=1) AND (((F+M)/2)>=4 AND ((F+M)/2)<=5) THEN 'Cant Lose Them'
-    WHEN (R>=1 AND R<=2) AND (((F+M)/2)>=1 AND ((F+M)/2)<=2) THEN 'Hibernating'
-    WHEN (R>=0 AND R<=2) AND (((F+M)/2)>=0 AND ((F+M)/2)<=2) THEN 'Lost'
+    	WHEN (R>=0 AND R<=1) AND (((F+M)/2)>=4 AND ((F+M)/2)<=5) THEN 'Cant Lose Them'
+    	WHEN (R>=1 AND R<=2) AND (((F+M)/2)>=1 AND ((F+M)/2)<=2) THEN 'Hibernating'
+    	WHEN (R>=0 AND R<=2) AND (((F+M)/2)>=0 AND ((F+M)/2)<=2) THEN 'Lost'
 		END AS customer_segmentation
 FROM (
 	SELECT
