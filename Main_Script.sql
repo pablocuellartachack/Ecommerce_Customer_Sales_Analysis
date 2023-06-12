@@ -216,7 +216,8 @@ SELECT odt.category, odt.sub_category, odt.total_quantity, odt.total_profit, odt
        odu.avg_cost, odu.avg_price, odu.max_cost, odu.max_price
 FROM order_details_by_totals AS odt
 INNER JOIN order_details_by_units AS odu
-ON odt.sub_category = odu.sub_category;
+ON odt.sub_category = odu.sub_category
+ORDER BY odt.total_profit DESC;
 
 SELECT *
 FROM aggregate_order_details;
