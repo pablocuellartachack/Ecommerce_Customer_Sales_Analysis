@@ -195,12 +195,14 @@ FROM order_details_by_totals;
 # Finding the avg and max cost and sale price per unit for each subcategory
 CREATE VIEW order_details_by_units AS
 SELECT category, sub_category,
+    FORMAT(AVG(avg_profit),2) AS avg_profit,
     FORMAT(AVG(cost_per_unit),2) AS avg_cost,
     FORMAT(AVG(price_per_unit),2) AS avg_price,
     MAX(cost_per_unit) AS max_cost,
     MAX(price_per_unit) AS max_price
 FROM (
-	SELECT *,
+    SELECT *,
+    round(profit/quantity,2) AS avg_profit,
     round((sale_amount-profit)/quantity,2) AS cost_per_unit,
     round(sale_amount/quantity,2) AS price_per_unit
     FROM order_details) order_details_by_units
@@ -213,7 +215,7 @@ FROM order_details_by_units;
 # Combining the order_details_by_unit and order_details_by_totals for further analysis
 CREATE VIEW aggregate_order_details AS 
 SELECT odt.category, odt.sub_category, odt.total_quantity, odt.total_profit, odt.total_sales,
-       odu.avg_cost, odu.avg_price, odu.max_cost, odu.max_price
+       odu.avg_profit, odu.avg_cost, odu.avg_price, odu.max_cost, odu.max_price
 FROM order_details_by_totals AS odt
 INNER JOIN order_details_by_units AS odu
 ON odt.sub_category = odu.sub_category
